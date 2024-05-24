@@ -1,0 +1,36 @@
+# IntelliJ IDE
+/.idea/*
+
+# Terraform
+*.tfstate.*
+*.tfstate
+*.tfstate.*.backup
+*.tfstate.backup
+terraform.tfstate.d/
+*.tfvars
+*.tfvars.json
+.terraform/
+.terraform.lock.hcl
+
+# Ignore directories
+modules/
+nb_modules/
+
+# Logs
+logs/
+*.log
+
+# Mac files
+.DS_Store
+# Terraform files
+*.tfstate
+*.tfstate.backup
+*.tfstate.bak
+*.tfplan
+*.tfvars
+terraform.d
+terraform.tfstate
+terraform.tfstate.backup
+
+# Ignore all .tfstate files
+*.tfstate
