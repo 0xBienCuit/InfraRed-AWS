@@ -13,8 +13,7 @@ terraform.tfstate.d/
 .terraform.lock.hcl
 
 # Ignore directories
-modules/
-nb_modules/
+
 
 # Logs
 logs/
