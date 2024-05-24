@@ -1,0 +1,21 @@
+- name: Redirector Configuration
+  hosts: all
+  tasks:
+  
+    - name: Socat HTTP Config
+      shell:
+        cmd: tmux new -d "sudo socat TCP4-LISTEN:80,fork TCP4:{{ redirect_to }}:80" ';' split "sudo socat TCP4-LISTEN:443,fork TCP4:{{ redirect_to }}:443"
+      become: yes
+      when: redirector_type == 'http'
+
+    - name: Socat gophish Config
+      shell:
+        cmd: tmux new -d "sudo socat TCP4-LISTEN:443,fork TCP4:{{ redirect_to }}:443"
+      become: yes
+      when: redirector_type == 'gophish'
+
+    - name: Socat DNS Config
+      shell:
+        cmd: tmux new -d "sudo socat udp4-recvfrom:53,reuseaddr,fork udp4-sendto:{{ redirect_to }}:53"
+      become: yes
+      when: redirector_type == 'dns'

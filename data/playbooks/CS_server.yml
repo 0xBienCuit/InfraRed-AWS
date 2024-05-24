@@ -1,0 +1,70 @@
+---
+- name: Start Cobalt Strike Team Server
+  hosts: all
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: install unzip
+      apt:
+        name: unzip
+        state: present
+      become: yes
+    - name: Download Cobalt Strike
+      get_url:
+        url: https://pwndrop.0xzeeqa.be/CgklirDv/CStrike.txt
+        dest: /tmp/CStrike.txt
+        mode: "0644"
+
+    - name: Rename the downloaded file
+      command: mv /tmp/CStrike.txt /tmp/CStrike.zip
+
+    - name: Unzip the file
+      unarchive:
+        src: /tmp/CStrike.zip
+        dest: /opt/
+        extra_opts: ["-P", "melon"]
+        remote_src: yes
+      register: unzip_result
+      ignore_errors: yes
+
+    - name: Check if extraction was successful
+      fail:
+        msg: "Failed to extract Cobalt Strike"
+      when: unzip_result.failed
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+      become: yes
+
+    - name: Install Java
+      apt:
+        name: openjdk-8-jre
+        state: present
+      become: yes
+    - name: Get public IP
+      command: curl ifconfig.so
+      register: public_ip
+      changed_when: false
+
+    - name: Set the team server to be executable
+      command: chmod +x /opt/CStrike/Server/TeamServerImage
+    - name: Set the team server to be executable
+      command: chmod +x /opt/CStrike/Server/teamserver
+    - name: move the teamserver.service file to /etc/systemd/system/
+      ansible.builtin.copy:
+        src: /home/daq/projects/infraRed/data/templates/teamserver.service
+        dest: /etc/systemd/system/teamserver.service
+        owner: root
+        group: root
+      become: yes
+    - name: Reload systemd
+      systemd:
+        daemon_reload: yes
+      become: yes
+    - name: Start the team server systemd service
+      systemd:
+        name: teamserver
+        state: started
+        enabled: yes
+      become: yes

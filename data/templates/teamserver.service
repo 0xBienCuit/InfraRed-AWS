@@ -1,0 +1,14 @@
+[Unit]
+Description=Cobalt Strike Teamserver Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=Simple
+WorkingDirectory=/opt/CStrike/Server
+ExecStart=/bin/bash -c '/opt/CStrike/Server/teamserver $(curl -s ifconfig.so) melon'
+
+
+[Install]
+WantedBy=multi-user.target
+

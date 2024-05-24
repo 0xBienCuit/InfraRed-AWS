@@ -1,0 +1,10 @@
+#!/bin/bash
+# /opt/CStrike/Server/teamserver.sh
+
+# get public ip
+public_ip=$(curl ifconfig.so)
+# start the team server
+echo "changing directory to cobaltstrike"
+cd /opt/CStrike/Server
+# start the team server
+./TeamServerImage -Dcobaltstrike.server_port=50050 -Dcobaltstrike.server_bindto=0.0.0.0 -Djavax.net.ssl.keyStore=./cobaltstrike.store -Djavax.net.ssl.keyStorePassword=0123456 teamserver $public_ip $1

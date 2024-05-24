@@ -1,0 +1,23 @@
+- name: Core Configuration
+  hosts: all
+  tasks:
+
+    - name: update apt cache
+      apt:
+        update_cache: yes
+      become: yes
+      tags: update
+    - name: Install core deps
+      apt:
+        name:
+          - curl
+          - tmux
+          - git
+          - dirmngr
+          - wget
+          - vim
+          - socat
+        update_cache: yes
+        state: latest
+      become: yes
+      tags: update
