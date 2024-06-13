@@ -2,6 +2,10 @@
 
 This project automates the setup of a Command and Control (C2) infrastructure using Terraform and Ansible. It aims to streamline the deployment and configuration of infrastructure components required for managing and controlling systems efficiently.
 
+This diagram outlines the concept of the scenario used for this project:
+
+![](https://i.imgur.com/db2dIIz.png)
+
 # Folder Structure
 The project follows a structured layout to organize its files and resources effectively:
 
