@@ -22,7 +22,7 @@
       unarchive:
         src: /tmp/CStrike.zip
         dest: /opt/
-        extra_opts: ["-P", "melon"]
+        extra_opts: ["-P", "{{ vault_cstrike_zip_password }}"]
         remote_src: yes
       register: unzip_result
       ignore_errors: yes
