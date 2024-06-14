@@ -33,3 +33,4 @@ terraform.tfstate.backup
 
 # Ignore all .tfstate files
 *.tfstate
+data/playbooks/vault.yml
