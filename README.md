@@ -2,6 +2,10 @@
 
 This project automates the setup of a Command and Control (C2) infrastructure using Terraform and Ansible. It aims to streamline the deployment and configuration of infrastructure components required for managing and controlling systems efficiently.
 
+This diagram outlines the concept of the scenario used for this project:
+
+![](https://i.imgur.com/db2dIIz.png)
+
 # Folder Structure
 The project follows a structured layout to organize its files and resources effectively:
 
@@ -29,7 +33,7 @@ The project follows a structured layout to organize its files and resources effe
 To use this project, ensure you have the following prerequisites:
 - Terraform installed on your local machine ([Download Terraform](https://www.terraform.io/downloads.html))
 - Ansible installed on your local machine ([Install Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html))
-- OCI (Oracle Cloud Infrastructure) Account with necessary permissions and credentials
+- AWS Account with necessary permissions and credentials
 - CloudFlare Account for DNS management and HTTPS configuration
 - A registered Domain Name for your infrastructure
 - SSH Key Pair for secure access to servers
