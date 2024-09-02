@@ -24,9 +24,18 @@ variable "https_redirector_domain_host" {}
 variable "user_agent" {}
 variable "region" { default = "eu-west-1" }
 variable "ami_ubuntu" { default = "ami-0699e25774ba2ec52" }
-variable "cf-email" {}
-variable "cf-token" {}
-variable "cloudflare_zone_id" {}
+variable "cf-email" {
+  description = "Cloudflare email"
+  type        = string
+}
+variable "cf-token" {
+  description = "Cloudflare token"
+  type        = string
+}
+variable "cloudflare_zone_id" {
+  description = "Cloudflare Zone ID"
+  type        = string
+}
 
 
 variable "instance_type" {
@@ -73,7 +82,5 @@ variable "amis" {
     "us-west-2"      = "ami-0cdf40a7f31926f5e"
   }
 
-
-  
 }
 
