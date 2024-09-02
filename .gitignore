@@ -10,9 +10,8 @@ terraform.tfstate.d/
 *.tfvars
 *.tfvars.json
 .terraform/
-.terraform.lock.hcl
+./.terraform.lock.hcl
 
-# Ignore directories
 
 
 # Logs
@@ -34,3 +33,4 @@ terraform.tfstate.backup
 # Ignore all .tfstate files
 *.tfstate
 data/playbooks/vault.yml
+modules/aws/http-redirector/.terraform.lock.hcl
