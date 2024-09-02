@@ -8,7 +8,6 @@ resource "aws_security_group" "teamserver_sg" {
     to_port          = 80
     protocol         = "TCP"
     cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
   }
 
   ingress {
@@ -16,6 +15,7 @@ resource "aws_security_group" "teamserver_sg" {
     from_port       = 443
     to_port         = 443
     protocol        = "TCP"
+    cidr_blocks     = ["0.0.0.0/0"]
   }
 
   ingress {
@@ -23,11 +23,9 @@ resource "aws_security_group" "teamserver_sg" {
     from_port       = 50050
     to_port         = 50050
     protocol        = "TCP"
-        cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
+    cidr_blocks     = ["0.0.0.0/0"]
   }
 
-  #Restricted access to the management services from our allowed source IPS.
   ingress {
     description = "SSH"
     from_port   = 22
@@ -36,16 +34,12 @@ resource "aws_security_group" "teamserver_sg" {
     cidr_blocks = var.ssh_ipv4_cidr_blocks
   }
 
-  # The team server has unlimited access to the internet
   egress {
     from_port        = 0
     to_port          = 0
     protocol         = "-1"
     cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
   }
-
- 
 
   tags = {
     Name = "teamserver_sg"
