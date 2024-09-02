@@ -1,32 +1,32 @@
-# Terraform Module: cobalt-strike
+# Cobalt Strike Module
 
-a Cobalt Strike Instance using Ansible
+This module sets up a Cobalt Strike team server using Ansible.
+
+## Inputs
+
+| Name                | Description                              | Type         | Default | Required |
+|---------------------|------------------------------------------|--------------|---------|----------|
+| user-ansible        | User to run the Ansible playbook         | string       | n/a     | yes      |
+| ip                  | IP of the host to run the playbook on    | string       | n/a     | yes      |
+| bind-address        | IP to bind the Cobalt Strike server to   | string       | n/a     | yes      |
+| domain              | C2 Domain to host from                   | string       | n/a     | yes      |
+| teamserver-passglob | Password for the Cobalt Strike server    | string       | n/a     | yes      |
+| c2-profile          | C2 profile to use                        | string       | n/a     | yes      |
+| arguments           | Additional Ansible arguments             | list(string) | []      | no       |
+| envs                | Environment variables to pass in         | list(string) | []      | no       |
 
 ## Usage
 
 ```hcl
 module "cobalt-strike" {
-  source = "./cobalt-strike"
+  source = "../nb_modules/cobalt-strike"
 
-  # Add required variables here if applicable
+  user-ansible        = "admin"
+  ip                  = "192.168.1.1"
+  bind-address        = "0.0.0.0"
+  domain              = "example.com"
+  teamserver-passglob = "password"
+  c2-profile          = "default"
+  arguments           = ["--extra-vars 'key=value'"]
+  envs                = ["VAR1=value1", "VAR2=value2"]
 }
-```
-## Argument Reference
-
-| Name                | Required | Value Type   | Description                                     |
-|---------------------|----------|--------------|-------------------------------------------------|
-| ansible-user        | Yes      | string       | The User to authenticate as                     |
-| ip                  | Yes      | string       | The host IP to run the playbook on              |
-| cs-license          | Yes      | string       | Cobalt Strike License Key                       |
-| bind-address        | Yes      | string       | The address to bind the CS listener to          |
-| teamserver-password | Yes      | string       | The password for the CS teamserver              |
-| c2-profile          | Yes      | string       | The name of the C2 profile file                 |
-| domain              | Yes      | string       | The domain name to deploy on                    |
-| arguments           | No       | list(string) | Any additional Ansible arguments to pass in     |
-| envs                | no       | list(string) | Environment variables to pass in (-e delimited) |
-
-
-## Requirements
-
-- Terraform version X.X or newer
-- Ansible (if applicable)
