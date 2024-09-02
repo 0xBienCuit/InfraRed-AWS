@@ -4,17 +4,18 @@ locals {
 }
 
 variable "user-ansible" {
+  description = "User to run the Ansible playbook"
   type = string
 }
 
 variable "ip" {
-  type = string
   description = "IP of the host to run the playbook on"
+  type = string
 }
 
 variable "bind-address" {
+  description = "IP to bind the Cobalt Strike team server to"
   type = string
-  description = "IP of the host to bind the Cobalt Strike team server to"
 }
 
 variable "domain" {
@@ -23,23 +24,23 @@ variable "domain" {
 }
 
 variable "teamserver-passglob" {
-  type = string
   description = "Password for the Cobalt Strike team server"
+  type = string
 }
 
 variable "c2-profile" {
-  type = string
   description = "C2 profile to use"
+  type = string
 }
 
 variable "arguments" {
+  description = "Any additional Ansible arguments to pass in"
+  type = list(string)
   default = []
-  type    = list(string)
-  description = "Any additional Ansible arguments to pass in."
 }
 
 variable "envs" {
+  description = "Environment variables to pass in. Will be delimited by -e automatically"
+  type = list(string)
   default = []
-  type    = list(string)
-  description = "Environment variables to pass in. Will be delimited by -e automatically."
 }
