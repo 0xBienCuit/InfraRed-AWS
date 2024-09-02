@@ -1,12 +1,12 @@
 locals {
   cs-ansible-playbook = "${local.playbook-path}/CS_server.yml"
-    ansible-playbook = "${local.playbook-path}/core_config.yml"
+  ansible-playbook    = "${local.playbook-path}/core_config.yml"
 }
 
 
 variable "cs-http-c2-user" {
-  type = string
-  default = "admin"
+  type        = string
+  default     = "admin"
   description = "User to authenticate as"
 }
 
@@ -16,18 +16,18 @@ variable "cs-http-c2-user" {
 variable "user" {
   description = "User to authenticate as"
 }
-variable "security_groups"{
-  type = list(string)
-  default=[""]
+variable "security_groups" {
+  type    = list(string)
+  default = [""]
 }
 
-variable "security_groups_inbound_http"{
-  type = list(string)
-  default=[""]
+variable "security_groups_inbound_http" {
+  type    = list(string)
+  default = [""]
 }
 
 variable "install" {
-  type = list(string)
+  type    = list(string)
   default = []
 }
 
@@ -103,9 +103,9 @@ variable "teamserver_names" {
 
 variable "ssh_priv_key_name" {
   description = "The filename in your local ~/.ssh/ folder of the private SSH key that can connect to the AWS hosts for provisioning."
-  type = string
+  type        = string
   validation {
-    condition = fileexists("./data/ssh_keys/${var.ssh_priv_key_name}")
+    condition     = fileexists("./data/ssh_keys/${var.ssh_priv_key_name}")
     error_message = "The file containing the private SSH key for provisioning is was not found in the folder: ~/.ssh/."
   }
 }
