@@ -34,3 +34,4 @@ terraform.tfstate.backup
 *.tfstate
 data/playbooks/vault.yml
 modules/aws/http-redirector/.terraform.lock.hcl
+.terraform.lock.hcl
