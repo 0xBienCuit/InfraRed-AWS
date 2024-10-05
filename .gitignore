@@ -35,3 +35,4 @@ terraform.tfstate.backup
 data/playbooks/vault.yml
 modules/aws/http-redirector/.terraform.lock.hcl
 .terraform.lock.hcl
+data/playbooks/strix-c2.yml
