@@ -57,26 +57,6 @@ variable "region" {
   default     = "eu-west-1"
 }
 
-# variable "cloudflare_email" {
-#   description = "The email address used to login to Cloudflare"
-#   default     = "bouquiauxnico@gmail.com"
-# }
-
-# variable "cloudflare_api_key" {
-#   description = "The Cloudflare API key"
-#   default     = "mMXZKWoysI-AxBlMBmvn0i_jHTjjGftaeviI0eU8"
-# }
-
-
-# variable "cloudflare_api_token" {
-#   description = "The Cloudflare API token "
-#   default     = "udpB5Vry1Jiqfzevwnlv97Hgie0Ve6OpUgkuh8mj"
-# }
-
-# variable "cloudflare_zone_id" {
-#   description = "The Cloudflare zone ID"
-#   default     = "323f639fe944fd1c16541e9eba40aa00"
-# }
 
 
 
